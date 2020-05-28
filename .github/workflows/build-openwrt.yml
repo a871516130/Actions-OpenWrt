@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: OP
+name: gl-inetopenwrt
 
 on:
   repository_dispatch:
@@ -23,7 +23,7 @@ on:
     types: started
 
 env:
-  REPO_URL: https://github.com/gl-inet/openwrt
+  REPO_URL: https://github.com/a871516130/gl-inetopenwrt-0-14.3
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
@@ -73,6 +73,9 @@ jobs:
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
+
+    - name: Clear temp buffer
+      run: cd openwrt && rm ./tmp -rf
 
     - name: Load custom configuration
       run: |
